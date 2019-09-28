@@ -1,27 +1,29 @@
 {
   "name": "diurivj-generator",
-  "version": "0.0.1",
-  "description": "Full stack generator, Node and React",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "irongenerate-full": "./src/index.js"
+  },
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "start:watch": "nodemon --watch src --exec ts-node src/index.ts",
-    "build": "tsc"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/diurivj/generator.git"
   },
-  "author": "DiuriVJ",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/diurivj/generator/issues"
   },
   "homepage": "https://github.com/diurivj/generator#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "inquirer": "^7.0.0"
+  },
   "devDependencies": {
-    "nodemon": "^1.19.2",
-    "ts-node": "^8.4.1",
-    "typescript": "^3.6.3"
+    "shx": "^0.3.2"
   }
 }
