@@ -3,6 +3,7 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const fs = require('fs');
+const shell = require('shelljs');
 const CHOICES = fs.readdirSync('templates');
 const CURR_DIR = process.cwd();
 
@@ -24,12 +25,18 @@ const QUESTIONS = [
   }
 ];
 
+const pkgBackend = require('../templates/Full Stack (Without Auth Boilerplate)/backend/package.json');
+
 inquirer.prompt(QUESTIONS).then((answers) => {
   const projectChoice = answers['project-choice'];
   const projectName = answers['project-name'];
   const templatePath = `templates/${projectChoice}`;
-  if (!createProject(`${CURR_DIR}/${projectName}`)) return;
+  const targetPath = `${CURR_DIR}/${projectName}`;
+  if (!createProject(targetPath)) return;
   createDirectoryContents(templatePath, projectName);
+  postProcess(`${targetPath}/backend`);
+  postProcess(`${targetPath}/frontend`);
+  showMessage(projectName);
 });
 
 function createProject(projectPath) {
@@ -57,4 +64,33 @@ function createDirectoryContents(templatePath, newProjectPath) {
       createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`); // recursive call
     }
   });
+}
+
+function postProcess(targetPath) {
+  shell.cd(targetPath);
+  let cmd = '';
+  if (shell.which('yarn')) {
+    cmd = 'yarn';
+  } else if (shell.which('npm')) {
+    cmd = 'npm install';
+  }
+  if (cmd) {
+    const result = shell.exec(cmd);
+    if (result.code !== 0) {
+      return false;
+    }
+  } else {
+    console.log(chalk.red('No yarn or npm found. Cannot run installation.'));
+  }
+  return true;
+}
+
+function showMessage(projectName) {
+  console.log('');
+  console.log(chalk.green('Done ✅'));
+  console.log('');
+  console.log(chalk.black.bgMagenta('Go into the project:'));
+  console.log(chalk.black.bgMagenta(`cd ${projectName}`));
+  console.log('');
+  console.log(chalk.bold('Happy Coding ❤️'));
 }

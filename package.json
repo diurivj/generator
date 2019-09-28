@@ -21,7 +21,9 @@
   "homepage": "https://github.com/diurivj/generator#readme",
   "dependencies": {
     "chalk": "^2.4.2",
-    "inquirer": "^7.0.0"
+    "ejs": "^2.7.1",
+    "inquirer": "^7.0.0",
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "shx": "^0.3.2"
