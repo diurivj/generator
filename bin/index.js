@@ -2,9 +2,10 @@
 
 const inquirer = require('inquirer');
 const chalk = require('chalk');
+const path = require('path');
 const fs = require('fs');
 const shell = require('shelljs');
-const CHOICES = fs.readdirSync(path.join(__dirname, 'templates'));
+const CHOICES = fs.readdirSync(path.join(__dirname, '../templates'));
 const CURR_DIR = process.cwd();
 
 const QUESTIONS = [
@@ -28,7 +29,7 @@ const QUESTIONS = [
 inquirer.prompt(QUESTIONS).then((answers) => {
   const projectChoice = answers['project-choice'];
   const projectName = answers['project-name'];
-  const templatePath = path.join(__dirname, 'templates', projectChoice);
+  const templatePath = path.join(__dirname, '../templates', projectChoice);
   const targetPath = `${CURR_DIR}/${projectName}`;
   if (!createProject(targetPath)) return;
   createDirectoryContents(templatePath, projectName);
