@@ -86,11 +86,16 @@ function postProcess(targetPath) {
 }
 
 function showMessage(projectName) {
-  console.log('');
   console.log(chalk.green('Done ✅'));
   console.log('');
-  console.log(chalk.black.bgMagenta('Go into the project:'));
-  console.log(chalk.black.bgMagenta(`cd ${projectName}`));
+  console.log(chalk.magenta('Go into the project:'));
+  console.log(chalk.magenta.bold(`cd ${projectName}`));
+  console.log('');
+  console.log(chalk.green('Run the backend with:'));
+  console.log(chalk.green.bold('npm run dev'));
+  console.log('');
+  console.log(chalk.blue('Run the frontend with:'));
+  console.log(chalk.blue.bold('yarn start'));
   console.log('');
   console.log(chalk.bold('Happy Coding ❤️'));
 }
