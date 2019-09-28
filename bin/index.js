@@ -1,10 +1,10 @@
-#!/usr/bin/env/ node
+#!/usr/bin/env node
 
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const fs = require('fs');
 const shell = require('shelljs');
-const CHOICES = fs.readdirSync('templates');
+const CHOICES = fs.readdirSync(path.join(__dirname, 'templates'));
 const CURR_DIR = process.cwd();
 
 const QUESTIONS = [
@@ -25,12 +25,10 @@ const QUESTIONS = [
   }
 ];
 
-const pkgBackend = require('../templates/Full Stack (Without Auth Boilerplate)/backend/package.json');
-
 inquirer.prompt(QUESTIONS).then((answers) => {
   const projectChoice = answers['project-choice'];
   const projectName = answers['project-name'];
-  const templatePath = `templates/${projectChoice}`;
+  const templatePath = path.join(__dirname, 'templates', projectChoice);
   const targetPath = `${CURR_DIR}/${projectName}`;
   if (!createProject(targetPath)) return;
   createDirectoryContents(templatePath, projectName);
