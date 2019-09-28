@@ -30,5 +30,6 @@
     "chalk": "^2.4.2",
     "inquirer": "^7.0.0",
     "shelljs": "^0.8.3"
-  }
+  },
+  "preferGlobal": true
 }
