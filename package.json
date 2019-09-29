@@ -1,6 +1,6 @@
 {
   "name": "ironhack-generator-full",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "Fullstack generator with Express and React by DiuriVJ (Ironhack)",
   "bin": {
     "diurivj": "bin/index.js"
