@@ -1,12 +1,15 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3000';
+process.env.NODE_ENV === 'production'
+  ? (const baseURL = 'here should be your production endpoint')
+  : (const baseURL = 'http://localhost:3000');
+
 const service = axios.create({ withCredentials: true, baseURL });
 
-const AUTH_SERVICE = {
+const MY_SERVICE = {
   test: async () => {
     return await service.get('/');
   }
 };
 
-export default AUTH_SERVICE;
+export default MY_SERVICE;

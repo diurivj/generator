@@ -34,4 +34,7 @@ app.use(logger('dev'));
 const index = require('./routes/index');
 app.use('/', index);
 
+// Uncomment this line for production
+// app.get('/*', (req, res) => res.sendFile(__dirname + '/public/index.html'));
+
 module.exports = app;

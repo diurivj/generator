@@ -67,10 +67,10 @@ function createDirectoryContents(templatePath, newProjectPath) {
 function postProcess(targetPath) {
   shell.cd(targetPath);
   let cmd = '';
-  if (shell.which('yarn')) {
-    cmd = 'yarn';
-  } else if (shell.which('npm')) {
+  if (String(targetPath).includes('backend')) {
     cmd = 'npm install';
+  } else if (String(targetPath).includes('frontend')) {
+    cmd = 'yarn';
   }
   if (cmd) {
     const result = shell.exec(cmd);
