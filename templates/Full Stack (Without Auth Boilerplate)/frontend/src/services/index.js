@@ -1,8 +1,9 @@
 import axios from 'axios';
+let baseURL;
 
 process.env.NODE_ENV === 'production'
-  ? (const baseURL = 'here should be your production endpoint')
-  : (const baseURL = 'http://localhost:3000');
+  ? (baseURL = 'here should be your production endpoint')
+  : (baseURL = 'http://localhost:3000');
 
 const service = axios.create({ withCredentials: true, baseURL });
 

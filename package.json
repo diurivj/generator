@@ -1,9 +1,9 @@
 {
   "name": "ironhack-generator-full",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fullstack generator with Express and React by DiuriVJ (Ironhack)",
   "bin": {
-    "ironye": "bin/index.js"
+    "ironfull": "bin/index.js"
   },
   "scripts": {
     "start": "node bin/index.js"
